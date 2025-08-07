@@ -56,31 +56,95 @@ module "eks" {
   # aws-auth configmap
   # manage_aws_auth_configmap = false
 
-  aws_auth_roles = [
-    {
-      rolearn  = "arn:aws:iam::594182463744:role/role1"
-      username = "role1"
-      groups   = ["system:masters"]
-    },
-  ]
+#  aws_auth_roles = [
+#    {
+#      rolearn  = "arn:aws:iam::594182463744:role/role1"
+#      username = "role1"
+#      groups   = ["system:masters"]
+#    },
+#  ]
 
-  aws_auth_users = [
-    {
-      userarn  = "arn:aws:iam::594182463744:user/user1"
-      username = "user1"
-      groups   = ["system:masters"]
-    },
-    {
-      userarn  = "arn:aws:iam::594182463744:user/user2"
-      username = "user2"
-      groups   = ["system:masters"]
-    },
-  ]
+#  aws_auth_users = [
+#    {
+#      userarn  = "arn:aws:iam::594182463744:user/user1"
+#      username = "user1"
+#      groups   = ["system:masters"]
+#    },
+#    {
+#      userarn  = "arn:aws:iam::594182463744:user/user2"
+#      username = "user2"
+#      groups   = ["system:masters"]
+#    },
+#  ]
 
-  aws_auth_accounts = [
-    "594182463744",
-    "888888888888",
-  ]
+#  aws_auth_accounts = [
+#    "594182463744",
+#    "888888888888",
+#  ]
+
+
+access_entries = {
+  role1 = {
+    principal_arn = "arn:aws:iam::594182463744:role/role1"
+    policy_associations = {
+      admin = {
+        policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+        access_scope = {
+          type = "cluster"
+        }
+      }
+    }
+  }
+
+  user1 = {
+    principal_arn = "arn:aws:iam::594182463744:user/user1"
+    policy_associations = {
+      admin = {
+        policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+        access_scope = {
+          type = "cluster"
+        }
+      }
+    }
+  }
+
+  user2 = {
+    principal_arn = "arn:aws:iam::594182463744:user/user2"
+    policy_associations = {
+      admin = {
+        policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+        access_scope = {
+          type = "cluster"
+        }
+      }
+    }
+  }
+
+  # Para aws_auth_accounts (cuentas AWS completas), puedes añadirlas como entries con solo el ARN de la cuenta
+  account1 = {
+    principal_arn = "arn:aws:iam::594182463744:root"
+    policy_associations = {
+      admin = {
+        policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+        access_scope = {
+          type = "cluster"
+        }
+      }
+    }
+  }
+
+  account2 = {
+    principal_arn = "arn:aws:iam::888888888888:root"
+    policy_associations = {
+      admin = {
+        policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+        access_scope = {
+          type = "cluster"
+        }
+      }
+    }
+  }
+}
 
   tags = {
     Environment = "dev"
