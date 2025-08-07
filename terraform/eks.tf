@@ -120,30 +120,9 @@ access_entries = {
     }
   }
 
-  # Para aws_auth_accounts (cuentas AWS completas), puedes añadirlas como entries con solo el ARN de la cuenta
-  account1 = {
-    principal_arn = "arn:aws:iam::594182463744:root"
-    policy_associations = {
-      admin = {
-        policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
-        access_scope = {
-          type = "cluster"
-        }
-      }
-    }
-  }
 
-  account2 = {
-    principal_arn = "arn:aws:iam::888888888888:root"
-    policy_associations = {
-      admin = {
-        policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
-        access_scope = {
-          type = "cluster"
-        }
-      }
-    }
-  }
+ 
+
 }
 
   tags = {
