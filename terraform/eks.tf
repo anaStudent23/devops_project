@@ -77,10 +77,10 @@ module "eks" {
 #    },
 #  ]
 
-  aws_auth_accounts = [
-    "594182463744",
-    "888888888888",
-  ]
+#  aws_auth_accounts = [
+#    "594182463744",
+#    "888888888888",
+#  ]
 
 
 access_entries = {
@@ -120,6 +120,29 @@ access_entries = {
     }
   }
 
+ account_594182463744 = {
+    principal_arn = "arn:aws:iam::594182463744:root"
+    policy_associations = {
+      admin = {
+        policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+        access_scope = {
+          type = "cluster"
+        }
+      }
+    }
+  }
+  
+  account_888888888888 = {
+    principal_arn = "arn:aws:iam::888888888888:root"
+    policy_associations = {
+      admin = {
+        policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+        access_scope = {
+          type = "cluster"
+        }
+      }
+    }
+  }
 
  
 
