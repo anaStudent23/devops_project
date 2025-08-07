@@ -77,10 +77,10 @@ module "eks" {
 #    },
 #  ]
 
-#  aws_auth_accounts = [
-#    "594182463744",
-#    "888888888888",
-#  ]
+  aws_auth_accounts = [
+    "594182463744",
+    "888888888888",
+  ]
 
 
 access_entries = {
