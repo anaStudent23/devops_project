@@ -5,7 +5,6 @@ terraform {
     aws = {
       source  = "hashicorp/aws"
       version = "~> 5.0"
-      region = "us-east-2"
     }
   }
 
@@ -16,4 +15,8 @@ terraform {
       name = "devops-project-workspace"
     }
   }
+}
+
+provider "aws" {
+  region = "us-east-2"
 }
